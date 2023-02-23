@@ -23,7 +23,7 @@ jobs:
 
     - name: Merge main branch into gh-pages
       run: |
-        git merge --no-commit --no-ff main
+        git merge --no-commit --no-ff origin/main
         git commit -m "Merge main branch into gh-pages"
 
     - name: Push changes to gh-pages
