@@ -3,17 +3,17 @@ name: Deploy to gh-pages
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout main branch
+    - name: Checkout develop branch
       uses: actions/checkout@v3
       with:
-        ref: main
+        ref: develop
 
     - name: Checkout gh-pages branch
       uses: actions/checkout@v3
@@ -26,10 +26,10 @@ jobs:
         git config --global user.name "${{ github.event.head_commit.author.name }}"
         git config --global user.email "${{ github.event.head_commit.author.email }}"
 
-    - name: Merge main branch into gh-pages
+    - name: Merge develop branch into gh-pages
       run: |
-        git merge --no-commit --no-ff origin/main
-        git commit -m "Merge main branch into gh-pages"
+        git merge --no-commit --no-ff origin/develop
+        git commit -m "Merge develop branch into gh-pages"
 
     - name: Push changes to gh-pages
       uses: ad-m/github-push-action@master
