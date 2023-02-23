@@ -21,9 +21,14 @@ jobs:
         ref: gh-pages
         fetch-depth: 0
 
+    - name: Set up Git identity
+      run: |
+        git config --global user.name "${{ github.event.head_commit.author.name }}"
+        git config --global user.email "${{ github.event.head_commit.author.email }}"
+
     - name: Merge main branch into gh-pages
       run: |
-        git merge --no-commit --no-ff main
+        git merge --no-commit --no-ff origin/main
         git commit -m "Merge main branch into gh-pages"
 
     - name: Push changes to gh-pages
