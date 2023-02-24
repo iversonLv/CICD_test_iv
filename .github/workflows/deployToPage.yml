@@ -30,7 +30,10 @@ jobs:
       run: git merge --no-commit --no-ff origin/dev
     
     - name: Remove existing docs
-      run: rm -rf docs
+      run: |
+        rm -rf docs
+        pwd
+        echo "Current directory: $PWD"
       
     - name: Copy docs index.html and rename 404.html
       run: |
