@@ -31,12 +31,15 @@ jobs:
 
     - name: Merge dev branch into gh-pages
       run: git merge --no-commit --no-ff origin/dev
-      
-    - name: Build Angular app
-      run: ng build --prod --output-path docs --base-href /dotaProject/
+    
+    - name: Remove existing docs
+      run: rm -rf docs
       
     - name: Copy docs index.html and rename 404.html
-      run: cp docs/index.html docs/404.html
+      run: |
+        mkdir docs
+        touch index.html
+        cp docs/index.html docs/404.html
       
     - name: Commit
       run: git commit -m "Merge dev branch into gh-pages"
