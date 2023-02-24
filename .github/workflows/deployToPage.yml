@@ -14,9 +14,6 @@ jobs:
       run: |
         git config --global user.name "${{ github.event.head_commit.author.name }}"
         git config --global user.email "${{ github.event.head_commit.author.email }}"
-      
-    - name: Install Angular CLI
-      run: npm install -g @angular/cli
 
     - name: Checkout dev branch
       uses: actions/checkout@v3
@@ -38,7 +35,7 @@ jobs:
     - name: Copy docs index.html and rename 404.html
       run: |
         mkdir docs
-        touch index.html
+        touch docs/index.html
         cp docs/index.html docs/404.html
       
     - name: Commit
