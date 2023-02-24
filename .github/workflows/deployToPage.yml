@@ -32,8 +32,8 @@ jobs:
     - name: Remove existing docs
       run: |
         rm -rf docs
-        pwd
-        echo "Current directory: $PWD"
+        ls
+        echo "Current directory: $LS"
       
     - name: Copy docs index.html and rename 404.html
       run: |
