@@ -37,6 +37,7 @@ jobs:
       run: |
         mkdir docs
         touch docs/index.html
+        touch 404.txt
         cp docs/index.html docs/404.html
         ls
       
